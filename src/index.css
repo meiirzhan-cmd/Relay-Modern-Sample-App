@@ -179,11 +179,91 @@ button:focus-visible {
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+@theme {
+  --font-display: 'Orbitron', sans-serif;
+  --font-body: 'Rajdhani', sans-serif;
+  
+  --color-space-black: #0a0a0f;
+  --color-space-dark: #12121a;
+  --color-space-gray: #1a1a24;
+  --color-space-light: #2a2a3a;
+  
+  --color-sw-yellow: #ffe81f;
+  --color-sw-gold: #ffd700;
+  --color-sw-red: #ff4444;
+  --color-sw-blue: #4a90d9;
+  --color-sw-cyan: #00d4ff;
+  --color-sw-green: #44ff88;
+  
+  --color-glow-yellow: rgba(255, 232, 31, 0.3);
+  --color-glow-blue: rgba(74, 144, 217, 0.3);
+}
+
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply border-space-light;
   }
+  
   body {
-    @apply bg-background text-foreground;
+    @apply bg-space-black text-white font-body antialiased;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .text-glow-yellow {
+    text-shadow: 0 0 10px var(--color-glow-yellow), 0 0 20px var(--color-glow-yellow);
+  }
+  
+  .text-glow-blue {
+    text-shadow: 0 0 10px var(--color-glow-blue), 0 0 20px var(--color-glow-blue);
+  }
+  
+  .card-glow {
+    box-shadow: 0 0 20px rgba(255, 232, 31, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
+  
+  .star-field {
+    background-image: 
+      radial-gradient(1px 1px at 10% 20%, rgba(255, 255, 255, 0.8), transparent),
+      radial-gradient(1px 1px at 30% 60%, rgba(255, 255, 255, 0.6), transparent),
+      radial-gradient(1px 1px at 50% 40%, rgba(255, 255, 255, 0.7), transparent),
+      radial-gradient(1px 1px at 70% 80%, rgba(255, 255, 255, 0.5), transparent),
+      radial-gradient(1px 1px at 90% 10%, rgba(255, 255, 255, 0.6), transparent),
+      radial-gradient(2px 2px at 15% 75%, rgba(255, 232, 31, 0.4), transparent),
+      radial-gradient(2px 2px at 85% 35%, rgba(74, 144, 217, 0.4), transparent);
+  }
+  
+  .animate-pulse-slow {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: var(--color-space-dark);
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: var(--color-space-light);
+    border-radius: 3px;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background: var(--color-sw-yellow);
   }
 }

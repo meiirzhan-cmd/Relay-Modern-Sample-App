@@ -2,7 +2,13 @@ import { StrictMode, Suspense } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.tsx";
-import { Environment, Network, type FetchFunction } from "relay-runtime";
+import {
+  Environment,
+  Network,
+  RecordSource,
+  Store,
+  type FetchFunction,
+} from "relay-runtime";
 import { RelayEnvironmentProvider } from "react-relay";
 
 const HTTP_ENDPOINT = "https://graphql.org/graphql/";
@@ -22,6 +28,7 @@ const fetchGraphQL: FetchFunction = async (request, variables) => {
 
 const environment = new Environment({
   network: Network.create(fetchGraphQL),
+  store: new Store(new RecordSource()),
 });
 
 createRoot(document.getElementById("root")!).render(
