@@ -74,7 +74,7 @@ src/
 
 ```bash
 # Clone the repository
-git clone <repository-url>
+git clone [<repository-url>](https://github.com/meiirzhan-cmd/Relay-Modern-Sample-App.git)
 cd relay-modern-sample-app
 
 # Install dependencies
