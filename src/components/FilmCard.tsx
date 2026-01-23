@@ -50,7 +50,7 @@ export const FilmCard = ({ film }: Readonly<FilmCardProps>) => {
 
   return (
     <Card className="group relative overflow-hidden">
-      <div className="absolute inset-0 bg-linear-to-br from-sw-yellow/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      <div className="absolute inset-0 bg-gradient-to-br from-sw-yellow/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
       <CardHeader className="relative">
         <div className="flex items-start justify-between">
@@ -84,11 +84,7 @@ export const FilmCard = ({ film }: Readonly<FilmCardProps>) => {
 
       <CardFooter className="relative flex flex-wrap gap-2">
         {data.producers?.slice(0, 2).map((producer, index) => (
-          <Badge
-            key={producer + " " + index}
-            variant="secondary"
-            className="text-xs"
-          >
+          <Badge key={index} variant="secondary" className="text-xs">
             {producer}
           </Badge>
         ))}

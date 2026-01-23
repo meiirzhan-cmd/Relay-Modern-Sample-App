@@ -5,10 +5,26 @@ import path from "node:path";
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(), tailwindcss()],
+  plugins: [
+    react({
+      babel: {
+        plugins: ["relay"],
+      },
+    }),
+    tailwindcss(),
+  ],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
+    },
+  },
+  server: {
+    proxy: {
+      "/graphql": {
+        target: "https://swapi-graphql.eskerda.vercel.app",
+        changeOrigin: true,
+        rewrite: () => "",
+      },
     },
   },
 });

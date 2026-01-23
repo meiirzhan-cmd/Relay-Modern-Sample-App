@@ -2,7 +2,7 @@ import { graphql, usePreloadedQuery, type PreloadedQuery } from "react-relay";
 import StarshipCard from "./StarshipCard";
 import type { StarshipsListQuery } from "./__generated__/StarshipsListQuery.graphql";
 
-const starshipsQuery = graphql`
+export const StarshipsListQueryNode = graphql`
   query StarshipsListQuery($first: Int) {
     allStarships(first: $first) {
       starships {
@@ -20,7 +20,7 @@ interface Props {
 
 const StarshipsList = ({ queryReference }: Props) => {
   const data = usePreloadedQuery<StarshipsListQuery>(
-    starshipsQuery,
+    StarshipsListQueryNode,
     queryReference,
   );
 

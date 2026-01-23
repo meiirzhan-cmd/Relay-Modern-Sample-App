@@ -3,7 +3,7 @@ import { FilmCard } from "./FilmCard";
 import { usePreloadedQuery, type PreloadedQuery } from "react-relay";
 import type { FilmsListQuery } from "./__generated__/FilmsListQuery.graphql";
 
-const filmsQuery = graphql`
+export const FilmsListQueryNode = graphql`
   query FilmsListQuery {
     allFilms {
       films {
@@ -14,12 +14,12 @@ const filmsQuery = graphql`
   }
 `;
 
-type Props = {
+interface Props {
   queryRef: PreloadedQuery<FilmsListQuery>;
-};
+}
 
-export const FilmsList = (props: Props) => {
-  const data = usePreloadedQuery<FilmsListQuery>(filmsQuery, props.queryRef);
+const FilmsList = ({ queryRef }: Props) => {
+  const data = usePreloadedQuery<FilmsListQuery>(FilmsListQueryNode, queryRef);
 
   const films =
     data?.allFilms?.films?.filter(

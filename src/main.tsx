@@ -10,8 +10,9 @@ import {
   type FetchFunction,
 } from "relay-runtime";
 import { RelayEnvironmentProvider } from "react-relay";
+import { LoadingSpinner } from "./components/Loading.tsx";
 
-const HTTP_ENDPOINT = "https://graphql.org/graphql/";
+const HTTP_ENDPOINT = "/graphql";
 
 const fetchGraphQL: FetchFunction = async (request, variables) => {
   const resp = await fetch(HTTP_ENDPOINT, {
@@ -34,7 +35,7 @@ const environment = new Environment({
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <RelayEnvironmentProvider environment={environment}>
-      <Suspense fallback="Loading...">
+      <Suspense fallback={<LoadingSpinner />}>
         <App />
       </Suspense>
     </RelayEnvironmentProvider>
