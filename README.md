@@ -6,6 +6,12 @@ A modern React application demonstrating Relay Modern patterns and best practice
 
 This project serves as a **learning resource** for developers looking to understand Relay Modern's core concepts, including fragments, preloaded queries, colocation, and Suspense integration.
 
+## Screenshots
+
+![App Screenshot 1](screenshots/picture1.png)
+
+![App Screenshot 2](screenshots/picture2.png)
+
 ## Tech Stack
 
 | Technology    | Version |
